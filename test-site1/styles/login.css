@@ -1,0 +1,91 @@
+
+*{
+    margin:0;
+    padding: 0;
+    box-sizing: border-box;
+}
+#header{
+    height: 88px;
+    border: 1px solid;
+}
+
+#header .h_center{
+    width: 1200px;
+    height: 88px;
+
+    margin: 0 auto;
+}
+#header .h_center img{
+    float: left;
+    height: 80px;
+    width: 120px;
+    margin-top: 5px;
+}
+#header .h_center p{
+    float: left;
+    text-align: center;
+    width: 880px;
+    font-size: 50px;
+    border: 1px solid yellow;
+    margin-top: 20px;
+    margin-left: 80px;
+    color: black;
+    background: pink;
+    padding: 3px;
+}
+
+#login_body{
+    height: 700px;
+    background-image: url("../images/background.png");
+    background-position: center;
+    background-size: 100% auto;
+}
+#login_body .login_b_center{
+    width: 1200px;
+    height: 600px;
+    margin: 0 auto;
+    position: relative;
+}
+#login_body .login_bg{
+    width: 350px;
+    height: 351px;
+    background: rgba(255,255,255,0.9);
+    position: absolute;
+    right: -10px;
+    top: 80px;
+    padding: 30px;
+
+}
+#login div{
+    height: 40px;
+    margin-top: 20px;
+}
+
+#login input{
+    width: 250px;
+    height: 40px;
+    
+}
+#login .login_btn input{
+    background-color: coral;
+    width: 300px;
+    border: none;
+    color: whitesmoke;
+    float: left;
+
+}
+#login .login_btn a:hover{
+    color: blue;
+    float: left;
+
+}
+#login .forgot_password{
+    text-align: right;
+    margin-top: 20px;
+}
+a{
+    text-decoration:none;
+}
+
+
+
