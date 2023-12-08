@@ -1,0 +1,7 @@
+#chartContainer {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  width: 500px;
+  height: 200px;
+}
