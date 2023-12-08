@@ -1,0 +1,37 @@
+
+  
+  /* 圆角容器样式 */
+  .overlay-container {
+    position: fixed; /* 固定定位 */
+    top: 50%; /* 居中显示 */
+    left: 50%;
+    transform: translate(-50%, -50%); /* 居中显示 */
+    z-index: 999; /* 设置 z-index 让其显示在上层 */
+    background: linear-gradient(135deg, #FFFFCC, #FFFFFF);
+    border: 2px solid #ccc; /* 边框样式 */
+    border-radius: 15px; /* 圆角 */
+    padding: 20px; /* 内边距 */
+    max-width: 80%; /* 最大宽度 */
+    text-align: center; /* 文本居中 */
+  }
+  
+  /* 内容样式 */
+  .content {
+    padding: 40px;
+  }
+  
+  .content h1 {
+    font-size: 72px;
+    margin-bottom: 40px;
+  }
+  
+  .content p {
+    font-size: 36px;
+  }
+  .content li{
+    font-size: 36px;
+  }
+img {
+    margin-left: auto; /* 将图片放置在右侧 */
+    max-width: 400px; /* 图片最大宽度 */
+  }
