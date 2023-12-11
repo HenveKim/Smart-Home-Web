@@ -1,44 +1,20 @@
-
-*{
-    margin:0;
+body, html {
+    margin: 0;
     padding: 0;
-    box-sizing: border-box;
-}
-#header{
-    height: 88px;
-    border: 1px solid;
+    height: 100%;
 }
 
-#header .h_center{
-    width: 1200px;
-    height: 88px;
-
-    margin: 0 auto;
-}
-#header .h_center img{
-    float: left;
-    height: 80px;
-    width: 120px;
-    margin-top: 5px;
-}
-#header .h_center p{
-    float: left;
-    text-align: center;
-    width: 880px;
-    font-size: 50px;
-    border: 1px solid yellow;
-    margin-top: 20px;
-    margin-left: 80px;
-    color: black;
-    background: pink;
-    padding: 3px;
-}
-
-#login_body{
-    height: 700px;
+#login_body {
+    height: 100%;
     background-image: url("../images/background.png");
     background-position: center;
-    background-size: 100% auto;
+    background-size: cover;
+    /* 如果希望背景铺满整个页面，可以使用 background-size: cover; */
+    /* 如果希望背景图片始终保持原始尺寸，可以使用 background-size: contain; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* 可以使用 flex 属性来使内容垂直水平居中 */
 }
 #login_body .login_b_center{
     width: 1200px;

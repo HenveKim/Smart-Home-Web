@@ -1,0 +1,49 @@
+button {
+    padding: 30px 60px;
+    font-size: 32px;
+    border: none;
+    background-color: rgba(52, 152, 219, 0.8); 
+    color: white;
+    cursor: pointer;
+    border-radius: 20px;
+    margin: 5px;
+    /* 可根据需要进行调整 */
+}
+
+button:hover {
+    background-color: #2980b9;
+}
+
+/* 基本表单样式 */
+.furniture-form {
+    display: flex;
+    flex-direction: column;
+    max-width: 300px;
+    margin: auto;
+}
+
+/* 输入框样式 */
+.furniture-form input[type="text"],
+.furniture-form select {
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+/* 提交按钮样式 */
+.furniture-form input[type="submit"] {
+    padding: 10px 20px;
+    border: none;
+    background-color: #3498db;
+    color: white;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+.furniture-form input[type="submit"]:hover {
+    background-color: #2980b9;
+}
