@@ -51,12 +51,13 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'myproject.urls'
-import os
+#import os
 
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR,'templates')],#优先去项目根目录查找，我们就放在根目录
+        #'DIRS': [os.path.join(BASE_DIR,'templates')],#优先去项目根目录查找，我们就放在根目录
+        'DIRS': [],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
