@@ -4,9 +4,16 @@
   <meta charset="UTF-8">
   <title>Submenu in Sidebar</title>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> 
+<<<<<<< HEAD
+  <script src="../static/scripts/homeworkstay.js"></script> 
+  <link rel="stylesheet" href="../static/styles/homeworkstay.css">
+  <link rel="stylesheet" href="../static/styles/list.css">
+  <script src="../static/plugins/vue3.js"></script>
+=======
   <script src="scripts/homeworkstay.js"></script> 
   <link rel="stylesheet" href="styles/homeworkstay.css">
   <link rel="stylesheet" href="styles/list.css">
+>>>>>>> 8eab5764397e142e235ef194b2c1a0187f7e0ee2
 </head>
 <body>
 
@@ -23,15 +30,57 @@
     </li>
     <li><a href="phonenumber.html">我的</a></li>
     </ul>
+<<<<<<< HEAD
+    <img src="../static/images/logo.png" alt="logo.png">
+=======
     <img src="images/logo.png" alt="logo.png">
+>>>>>>> 8eab5764397e142e235ef194b2c1a0187f7e0ee2
   </div>
 
 
 
   <div class="content">
+<<<<<<< HEAD
+      <p id="romms">{{room}}的家居</p>
+      <div id="furniture">
+        <table>
+          <tr>
+            <th>类型</th>
+            <th>编号</th>
+            <th>状态</th>
+          </tr>
+          <tr v-for="furniture in furniture_list">
+
+            <th>{{furniture.type}}</th>
+            <th>{{furniture.id}}</th>
+            <th>{{furniture.state}}</th>
+          </tr>
+        </table>
+      </div>
+  </div>
+
+  <script>
+    var vm=Vue.createApp({
+      data(){
+        return{
+          furniture_list:[
+            {"type":"Refrigerator","id":1,"state":"on"},
+            {"type":"tv","id":2,"state":"off"},
+            {"type":"curtain","id":3,"state":"on"},
+          ]
+        }
+      }
+
+    }).mount("#furniture") 
+    
+  </script>
+
+
+=======
     <h1>网页内容标题</h1>
     <p>这是网页的主要内容...</p>
   </div>
+>>>>>>> 8eab5764397e142e235ef194b2c1a0187f7e0ee2
   <div>
     <div id="chartContainer">
       <canvas id="myChart"></canvas>
