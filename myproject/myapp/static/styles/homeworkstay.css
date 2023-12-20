@@ -1,0 +1,46 @@
+#chartContainer {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  width: 500px;
+  height: 200px;
+}
+
+.content {
+  text-align: center;
+}
+
+p#rooms {
+  margin-top: 20px; /* 调整段落上方间距 */
+}
+
+#content  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+    font-family: Arial, sans-serif;
+    border: 1px solid red; /* 边框颜色改为红色 */
+  
+  }
+
+  th, td {
+    border: 1px solid #ddd;
+    padding: 10px; /* 单元格内边距 */
+    text-align: left;
+    width: 150px; /* 单元格宽度 */
+    height: 40px; /* 单元格高度 */
+  }
+
+  th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+  }
+
+  tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+
+  tr:hover {
+    background-color: #f2f2f2;
+  }
+
