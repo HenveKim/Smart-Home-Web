@@ -17,11 +17,16 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from myapp import views
+from django.shortcuts import redirect
 
 urlpatterns = [
     # path('admin/', admin.site.urls),
-    
-    path('index/', views.index),
+    path('', lambda request: redirect('login/')),
 
-    
+    path('index/', views.index),
+    path('login/', views.login),
+    path('register/', views.register),
+    path('homeworkstay/', views.homeworkstay),
+    path('homeworkmake/', views.homeworkmake),
+
 ]
