@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+  <title>Submenu in Sidebar</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> 
+  <script src="../static/scripts/homeworkstay.js"></script> 
+  <link rel="stylesheet" href="../static/styles/homeworkstayin.css">
+  <link rel="stylesheet" href="../static/styles/list.css">
+  <script src="../static/plugins/vue3.js"></script>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="sidebar">
+          <div class="box"></div>
+          <ul>
+            <li><a href="index.html">首页</a></li>
+            <li><a href="#">服务</a>
+              <ul class="submenu">
+                  <li><a href="homeworkstay.html">家居信息查看</a></li>
+                  <li><a href="scene.html">创建特殊情景</a></li>
+                </ul>
+          </li>
+          <li><a href="phonenumber.html">我的</a></li>
+          </ul>
+          <img src="../static/images/logo.png" alt="logo.png">
+        </div>
+
+        <div class="back">
+            <a href="homeworkstay.html">返回</a>
+        </div>
+
+  <div class="content">
+    <p id="romms">{{room}}的家居</p>
+    <div id="furniture">
+      <table>
+        <tr>
+          <th>类型</th>
+          <th>编号</th>
+          <th>状态</th>
+        </tr>
+        <tr v-for="furniture in furniture_list" :key="furniture">
+
+          <th>{{furniture.type}}</th>
+          <th>{{furniture.id}}</th>
+          <th>{{furniture.state}}</th>
+          <th><button id="delete" class="delete-button" @click="deleteItem(furniture)">删除</button></th>
+        </tr>
+      </table>
+    </div>
+</div>
+
+<script>
+  var vm1=Vue.createApp({
+    data(){
+      return{
+        furniture_list:[
+          {"type":"Refrigerator","id":1,"state":"on"},
+          {"type":"tv","id":2,"state":"off"},
+          {"type":"curtain","id":3,"state":"on"},
+        ]
+      }
+    },
+    methods: {
+      deleteItem(furniture) {
+        this.items.splice(furniture, 1); // 删除对应索引的数据项
+      }
+    }
+
+  }).mount("#furniture") 
+  
+</script>
+
+<script>
+
+</script>
+<div id="app">
+  <button @click="showPopup">新增家具</button>
+
+  <!-- 模态框 -->
+  <div class="modal" :class="{ 'active': isPopupVisible }" @click="closePopup">
+    <!-- 弹窗 -->
+    <div class="popup" @click.stop>
+      <h2>新增家具</h2>
+      <div>
+        <label for="type">类型:</label>
+        <input type="text" id="type" v-model="newFurniture.type" />
+      </div>
+      <div>
+        <label for="number">编号:</label>
+        <input type="text" id="number" v-model="newFurniture.number" />
+      </div>
+      <div>
+        <label for="status">状态:</label>
+        <input type="text" id="status" v-model="newFurniture.status" />
+      </div>
+      <button @click="addFurniture">添加</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  const { createApp, ref } = Vue;
+
+  createApp({
+    data() {
+      return {
+        isPopupVisible: false,
+        newFurniture: {
+          type: '',
+          number: '',
+          status: ''
+        }
+      };
+    },
+    methods: {
+      showPopup() {
+        this.isPopupVisible = true;
+      },
+      closePopup() {
+        this.isPopupVisible = false;
+      },
+      addFurniture() {
+        // 这里可以添加家具的逻辑，例如将数据发送到服务器或者进行其他处理
+        console.log('新增家具信息:', this.newFurniture);
+
+        // 添加完成后关闭弹窗
+        this.isPopupVisible = false;
+      }
+    }
+  }).mount('#app');
+</script>
+
+<script>
+  function getTime() {
+      var date = new Date();
+      var year = date.getFullYear(); //获取年份
+      var month = date.getMonth() + 1; //获取月份
+      var day = date.getDate(); //获取日期
+      var hour = date.getHours(); //获取小时
+      hour = hour < 10 ? '0' + hour : hour;
+      var minute = date.getMinutes(); // 获取分
+      minute = minute < 10 ? '0' + minute : minute;
+      var seconds = date.getSeconds(); //获取秒
+      seconds = seconds < 10 ? '0' + seconds : seconds;
+      return year + '年' + month + '月' + day + '日&nbsp;' + hour + ':' + minute + ':' + seconds;
+  }
+
+  setInterval(function() {
+      document.querySelector('.box').innerHTML = getTime();
+  }, 1000)
+</script>
+
+</body>
+</html>

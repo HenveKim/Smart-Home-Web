@@ -13,12 +13,12 @@
 
 <div class="wrapper">
   <div class="sidebar">
+    <div class="box"></div>
     <ul>
       <li><a href="index.html">首页</a></li>
       <li><a href="#">服务</a>
         <ul class="submenu">
             <li><a href="homeworkstay.html">家居信息查看</a></li>
-            <li><a href="homeworkmake.html">增减家居</a></li>
             <li><a href="scene.html">创建特殊情景</a></li>
           </ul>
     </li>
@@ -27,43 +27,29 @@
     <img src="../static/images/logo.png" alt="logo.png">
   </div>
 
-
-
-  <div class="content">
-      <p id="romms">{{room}}的家居</p>
-      <div id="furniture">
-        <table>
-          <tr>
-            <th>类型</th>
-            <th>编号</th>
-            <th>状态</th>
-          </tr>
-          <tr v-for="furniture in furniture_list">
-
-            <th>{{furniture.type}}</th>
-            <th>{{furniture.id}}</th>
-            <th>{{furniture.state}}</th>
-          </tr>
-        </table>
-      </div>
+  <div id="rooms" class="room-grid">
+    <div v-for="index in 7" :key="index" class="fangjian">
+      <img class="tubiao"  src="../static//images/bed.jpg">
+      <p>{{room}}{{index}}</p>
+      <p>房间家具数：{{number}}</p>
+      <p>灯：{{light}}</p>
+      <p>门：{{door}}</p>
+      <a href="homeworkstayin.html" class="button-link"><button>进入房间</button></a>
+      <img src="../static/images/doorrr.png" alt="图片描述">
+    </div>
   </div>
 
   <script>
     var vm=Vue.createApp({
       data(){
-        return{
-          furniture_list:[
-            {"type":"Refrigerator","id":1,"state":"on"},
-            {"type":"tv","id":2,"state":"off"},
-            {"type":"curtain","id":3,"state":"on"},
-          ]
+        return {
+          room:"livingroom",
+          light:"on",
+          door:"off"
         }
       }
-
-    }).mount("#furniture") 
-    
+    }).mount("#rooms")
   </script>
-
 
   <div>
     <div id="chartContainer">
@@ -101,6 +87,27 @@
   </script>
   </div>
 </div>
+
+
+    <script>
+        function getTime() {
+            var date = new Date();
+            var year = date.getFullYear(); //获取年份
+            var month = date.getMonth() + 1; //获取月份
+            var day = date.getDate(); //获取日期
+            var hour = date.getHours(); //获取小时
+            hour = hour < 10 ? '0' + hour : hour;
+            var minute = date.getMinutes(); // 获取分
+            minute = minute < 10 ? '0' + minute : minute;
+            var seconds = date.getSeconds(); //获取秒
+            seconds = seconds < 10 ? '0' + seconds : seconds;
+            return year + '年' + month + '月' + day + '日&nbsp;' + hour + ':' + minute + ':' + seconds;
+        }
+ 
+        setInterval(function() {
+            document.querySelector('.box').innerHTML = getTime();
+        }, 1000)
+    </script>
 
 </body>
 </html>

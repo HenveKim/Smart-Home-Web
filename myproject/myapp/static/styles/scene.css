@@ -1,0 +1,44 @@
+.container {
+    background-color: white;
+    width: 90%;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    float: left;
+  }
+  
+
+
+/* 添加按钮样式 */
+.create-button {
+    padding: 8px 16px;
+    background-color: #3498db; /* 蓝色背景 */
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .create-button:hover {
+    background-color: #2980b9; /* 悬停时颜色变化 */
+  }
+  
+  /* 重置按钮样式 */
+  .regist-button {
+    padding: 8px 16px;
+    background-color: #ccc; /* 灰色背景 */
+    color: #555; /* 文字颜色 */
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .regist-button:hover {
+    background-color: #bbb; /* 悬停时颜色变化 */
+  }
+
+  #furniture {
+    position: absolute;
+    top: 70px; /* 位置在父容器底部 */
+    margin-left: 220px; /* 右边距 */
+  }

@@ -5,42 +5,50 @@
   width: 500px;
   height: 200px;
 }
-
-.content {
-  text-align: center;
+.fangjian{
+  background-color: white;
+  border-radius: 30px; /* 圆角半径 */
+    width: 300px;
+    height: 170px;
+    border: 1px solid black;
+    padding: 25px;
+    margin: 25px;
 }
-
-p#rooms {
-  margin-top: 20px; /* 调整段落上方间距 */
+.fangjian  img:first-child{
+  margin-top:13px;
+  width: 20px;
+  height: 20px;
+  margin-right: 2px
 }
-
-#content  table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 15px;
-    font-family: Arial, sans-serif;
-    border: 1px solid red; /* 边框颜色改为红色 */
-  
-  }
-
-  th, td {
-    border: 1px solid #ddd;
-    padding: 10px; /* 单元格内边距 */
-    text-align: left;
-    width: 150px; /* 单元格宽度 */
-    height: 40px; /* 单元格高度 */
-  }
-
-  th {
-    background-color: #f2f2f2;
-    font-weight: bold;
-  }
-
-  tr:nth-child(even) {
-    background-color: #f9f9f9;
-  }
-
-  tr:hover {
-    background-color: #f2f2f2;
-  }
-
+.fangjian img:last-child {
+  margin-top: -200px;
+  width :100px;
+  height: auto;
+  float: right;
+  margin-right: 20px; /* 右边距 */
+}
+.fangjian p{
+  font-size: 15px;
+}
+.fangjian button {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #3498db;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+.button-link {
+  margin-top: -45px;
+  float: right; /* 右浮动 */
+  margin-right: 20px; /* 右边距 */
+}
+.room-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3列 */
+  gap: 0; /* 间距 */
+}
