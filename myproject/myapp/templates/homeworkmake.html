@@ -3,10 +3,23 @@
 <head>
   <meta charset="UTF-8">
   <title>Submenu in Sidebar</title>
+<<<<<<< HEAD
   <link rel="stylesheet" href="../static/styles/list.css">
   <link rel="stylesheet" href="../static/styles/homeworkmake.css">
   <script src="../static/scripts/addroom.js" ></script>
   <script src="../static/plugins/vue3.js"></script>
+=======
+  <link rel="stylesheet" href="styles/list.css">
+  <link rel="stylesheet" href="styles/homeworkmake.css">
+  <script src="scripts/addroom.js" ></script>
+  <style>
+    /* 表单样式 */
+    .furniture-form {
+        display: none; /* 初始状态隐藏表单 */
+        /* 其他样式 */
+    }
+  </style>
+>>>>>>> 8eab5764397e142e235ef194b2c1a0187f7e0ee2
 </head>
 <body>
 
@@ -23,11 +36,126 @@
     </li>
     <li><a href="phonenumber.html">我的</a></li>
     </ul>
+<<<<<<< HEAD
     <img src="../static/images/logo.png" alt="logo.png">
   </div>
   <div>
 
   </div>
+=======
+    <img src="images/logo.png" alt="logo.png">
+  </div>
+  <div>
+
+    <button onclick="toggleForm('room1')">卧室1</button>
+    <button onclick="toggleForm('room2')">房间2</button>
+    <button onclick="toggleForm('room3')">房间3</button>
+    <!-- 添加更多按钮对应不同房间 -->
+
+    <form id="room1" class="furniture-form" action="/submit_furniture" method="post">
+        <label for="furnitureName1">卧室1:</label>
+        <input type="text" id="furnitureName1" name="furnitureName1" required>
+        <!-- 家具类型： -->
+        <label for="furnitureType1"></label>
+        <select id="furnitureType1" name="furnitureType1">
+            <option value="空调">空调</option>
+            <option value="电灯">电灯</option>
+            <option value="冰箱">冰箱</option>
+            <option value="其他">其他</option>
+            <!-- 其他家具类型选项 -->
+        </select>
+        <input type="text" id="otherTypeInput1" name="otherTypeInput1" placeholder="请输入其他家具类型" style="display: none;">
+        <input type="submit" value="添加家具">
+    </form>
+
+    <form id="room2" class="furniture-form" action="/submit_furniture" method="post">
+        <label for="furnitureName2">房间2:</label>
+        <input type="text" id="furnitureName2" name="furnitureName2" required>
+        <!-- 家具类型： -->
+        <label for="furnitureType2"></label>  
+        <select id="furnitureType2" name="furnitureType2">
+            <option value="空调">空调</option>
+            <option value="电灯">电灯</option>
+            <option value="冰箱">冰箱</option>
+            <option value="其他">其他</option>
+            <!-- 其他家具类型选项 -->
+        </select>
+        <input type="text" id="otherTypeInput2" name="otherTypeInput2" placeholder="请输入其他家具类型" style="display: none;">
+        <input type="submit" value="添加家具">
+    </form>
+
+    <form id="room3" class="furniture-form" action="/submit_furniture" method="post">
+      <label for="furnitureName3">房间3:</label>
+      <input type="text" id="furnitureName3" name="furnitureName3" required>
+      <!-- 家具类型： -->
+      <label for="furnitureType3"></label>  
+      <select id="furnitureType3" name="furnitureType3">
+          <option value="空调">空调</option>
+          <option value="电灯">电灯</option>
+          <option value="冰箱">冰箱</option>
+          <option value="其他">其他</option>
+          <!-- 其他家具类型选项 -->
+      </select>
+      <input type="text" id="otherTypeInput3" name="otherTypeInput3" placeholder="请输入其他家具类型" style="display: none;">
+      <input type="submit" value="添加家具">
+  </form>
+  
+  <form id="addRoomForm">
+    <label for="newRoomName">新房间名称:</label>
+    <input type="text" id="newRoomName" name="newRoomName" required>
+    <input type="submit" value="添加新房间">
+  </form>
+
+    <!-- 添加更多表单，每个表单对应一个房间 -->
+
+    <script>
+        function toggleForm(roomId) {
+            const form = document.getElementById(roomId);
+            if (form.style.display === 'none' || form.style.display === '') {
+                form.style.display = 'block';
+            } else {
+                form.style.display = 'none';
+            }
+        }
+        var select1 = document.getElementById('furnitureType1');
+    var otherInput1 = document.getElementById('otherTypeInput1');
+
+    select1.addEventListener('change', function() {
+        if (select1.value === '其他') {
+            otherInput1.style.display = 'inline-block';
+            otherInput1.setAttribute('required', 'required');
+        } else {
+            otherInput1.style.display = 'none';
+            otherInput1.removeAttribute('required');
+        }
+    });
+    var select2 = document.getElementById('furnitureType2');
+    var otherInput2 = document.getElementById('otherTypeInput2');
+
+    select2.addEventListener('change', function() {
+        if (select2.value === '其他') {
+            otherInput2.style.display = 'inline-block';
+            otherInput2.setAttribute('required', 'required');
+        } else {
+            otherInput2.style.display = 'none';
+            otherInput2.removeAttribute('required');
+        }
+    });
+    var select3 = document.getElementById('furnitureType3');
+    var otherInput3 = document.getElementById('otherTypeInput3');
+
+    select3.addEventListener('change', function() {
+        if (select3.value === '其他') {
+            otherInput3.style.display = 'inline-block';
+            otherInput3.setAttribute('required', 'required');
+        } else {
+            otherInput3.style.display = 'none';
+            otherInput3.removeAttribute('required');
+        }
+    });
+    </script>
+</div>
+>>>>>>> 8eab5764397e142e235ef194b2c1a0187f7e0ee2
 
 </body>
 </html>
