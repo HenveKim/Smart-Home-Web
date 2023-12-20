@@ -37,7 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'myapp',
+    'myapp.apps.MyappConfig',
 ]
 
 MIDDLEWARE = [
@@ -51,10 +51,12 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'myproject.urls'
+#import os
 
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        #'DIRS': [os.path.join(BASE_DIR,'templates')],#优先去项目根目录查找，我们就放在根目录
         'DIRS': [],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -76,8 +78,12 @@ WSGI_APPLICATION = 'myproject.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'smart',
+        'USER': 'root', #数据库服务器的用户
+        'PASSWORD': '01020002', #密码
+        'HOST': '127.0.0.1', #主机
+        'PORT': 3306, #端口
     }
 }
 

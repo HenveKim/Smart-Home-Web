@@ -1,0 +1,57 @@
+<!DOCTYPE> 
+<html> 
+    <head> 
+        <title>点击文字弹出一个DIV层窗口代码</title> 
+        <style> 
+        .black_overlay{ 
+            display: none; /* 此元素不会被显示*/
+            position: absolute; 
+            top: 0%; 
+            left: 0%; 
+            width: 100%; 
+            height: 100%; 
+            background-color: black; 
+            z-index:1001; /* z-index 属性设置元素的堆叠顺序。拥有更高堆叠顺序的元素总是会处于堆叠顺序较低的元素的前面。*/
+            -moz-opacity: 0.8; 
+            opacity:.80; /* opacity 属性设置元素的不透明级别。*/
+            filter: alpha(opacity=88);  
+			/* 所有浏览器都支持 opacity 属性。   注释：IE8 以及更早的版本支持替代的 filter 属性。例如：filter:Alpha(opacity=50)。*/
+        } 
+        .white_content { 
+            display: none; 
+            position: absolute; 
+            top: 25%; 
+            left: 25%; 
+            width: 55%; 
+            height: 55%; 
+            padding: 20px; 
+            border: 10px solid orange; 
+            background-color: white; 
+            z-index:1002; 
+            overflow: auto; 
+        } 
+    </style> 
+    </head> 
+    <body> 
+        <p>示例弹出层：
+			<a href = "javascript:void(0)" onclick = "document.getElementById('light').style.display='block';document.getElementById('fade').style.display='block'">
+				请点这里
+			</a>
+		</p> 
+        <div id="light" class="white_content">
+			这是一个层窗口示例程序. 
+			<a href = "javascript:void(0)" onclick = "document.getElementById('light').style.display='none';document.getElementById('fade').style.display='none'">点这里关闭本窗口</a>
+			</br>
+			<!-- 登陆部分代码 -->
+			<form action="1.html" method="post">
+                日期: <input type="date" name="" id="" value=""/></br>
+				用户名：<input type="text" name="" id="" value="" /></br>
+				密码：<input type="password" name="" id="" value="" /></br>
+
+				<input type="submit" value="提交"/>
+			</form>
+			
+		</div> 
+        <div id="fade" class="black_overlay"></div> 
+    </body> 
+</html>

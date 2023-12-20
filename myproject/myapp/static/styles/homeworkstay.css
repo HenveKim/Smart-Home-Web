@@ -1,0 +1,45 @@
+#chartContainer {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  width: 500px;
+  height: 200px;
+}
+.content {
+  text-align: center;
+}
+
+p#rooms {
+  margin-top: 20px; /* 调整段落上方间距 */
+}
+#content .table {
+    width: 100%;
+    border-width: 1px;
+    border-color: red;
+    margin-top: 15px;
+    font-family: Arial, sans-serif;
+    background-color: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  th, td {
+    border: 1px solid #dddddd;
+    padding: 12px;
+    text-align: left;
+  }
+
+  th {
+    background-color: #f0f0f0;
+    font-weight: bold;
+    color: #333333;
+  }
+
+  tr:nth-child(even) {
+    background-color: #ffffff;
+  }
+
+  tr:hover {
+    background-color: #f9f9f9;
+  }

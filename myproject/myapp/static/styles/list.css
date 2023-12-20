@@ -1,0 +1,75 @@
+/* 基本样式 */
+body, html {
+    height: 100%;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-image: url('../images/output.PNG');
+    
+    background-size: cover;
+    
+
+    background-attachment: fixed;
+  }
+  
+  /* 定义布局 */
+  .wrapper {
+    display: flex;
+    min-height: 100vh;
+  }
+  
+  /* 左侧栏样式 */
+  .sidebar {
+    width: 200px;
+    height: 800px;
+    background-color: #333;
+    color: #fff;
+
+  }
+  
+  .sidebar ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .sidebar ul li {
+    padding: 10px;
+    position: relative;
+  }
+  
+  .sidebar ul li a {
+    color: #fff;
+    text-decoration: none;
+  }
+  .sidebar img { 
+    width:180px;
+    position: relative;
+    left:10px;
+    top:500px;
+
+  }
+  /* 子菜单样式 */
+  .submenu {
+    display: none;
+    position: absolute;
+    top:0;
+    left: 100%;
+    background-color: #444;
+    min-width: 150px;
+  }
+  
+  .sidebar ul li:hover .submenu {
+    display: block;
+  }
+  
+  .submenu li {
+    padding: 8px;
+  }
+  
+  .submenu li a {
+    color: #fff;
+    text-decoration: none;
+  }
+  
+
+  
+  
