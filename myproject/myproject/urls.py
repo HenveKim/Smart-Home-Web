@@ -26,6 +26,8 @@ urlpatterns = [
     path('index/', views.index),
     path('login/', views.login),
     path('regist/', views.regist),
+    path('regist2/', views.regist2),
+
     path('homeworkstay/', views.homeworkstay),
     path('homeworkmake/', views.homeworkmake),
 

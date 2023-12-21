@@ -99,7 +99,7 @@
     padding-left: 40px;
 }
 
-#username ,#password,#Email, #rename ,#Telphone,#Birthday,#checkcode{
+#username,#password,#email,#phonenumber{
     /*设置输入框大小和边框*/
     width: 200px;
     height: 30px;

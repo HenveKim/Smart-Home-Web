@@ -3,39 +3,40 @@ from django.db import models
 # Create your models here.
 
 class User(models.Model):
-    uid = models.CharField(max_length=10, primary_key=True)
-    account = models.CharField(max_length=10, blank=True, null=True)
-    password = models.CharField(max_length=45, blank=True, null=True)
-    phonenumber = models.CharField(max_length=20, blank=True, null=True)
+    uid = models.BigAutoField(primary_key=True,verbose_name="uid号")
+    username = models.CharField(max_length=10, blank=True, null=True,verbose_name="用户名")
+    password = models.CharField(max_length=45, blank=True, null=True,verbose_name="密码")
+    email = models.CharField(max_length=20, blank=True, null=True,verbose_name="邮箱")
+    phonenumber = models.CharField(max_length=20, blank=True, null=True,verbose_name="手机号")
     class Meta:
         db_table = 'user'
 
 class Panel(models.Model):
-    pno = models.BigAutoField(primary_key=True)
-    time = models.TimeField(blank=True, null=True)
+    pno = models.BigAutoField(primary_key=True,verbose_name="pno号")
+    time = models.TimeField(blank=True, null=True,verbose_name="时间")
 
     class Meta:
         db_table = 'panel'
 
 class Room(models.Model):
-    rno = models.BigAutoField(primary_key=True)
-    name = models.CharField(max_length=45)
+    rno = models.BigAutoField(primary_key=True,verbose_name="rno号")
+    name = models.CharField(max_length=45,verbose_name="房间名")
 
     class Meta:
         db_table = 'room'
 
 class Sensor(models.Model):
-    sno = models.BigAutoField(primary_key=True)
-    name = models.CharField(max_length=45)
-    data = models.IntegerField()
+    sno = models.BigAutoField(primary_key=True,verbose_name="sno号")
+    name = models.CharField(max_length=45,verbose_name="传感器名")
+    data = models.IntegerField(verbose_name="数据")
     panel = models.ForeignKey(Panel, models.DO_NOTHING, db_column='panel_pno', blank=True, null=True)
 
     class Meta:
         db_table = 'sensor'
 
 class Rule(models.Model):
-    rno = models.BigAutoField(primary_key=True)
-    scene = models.CharField(max_length=45, blank=True, null=True)
+    rno = models.BigAutoField(primary_key=True,verbose_name="rno号")
+    scene = models.CharField(max_length=45, blank=True, null=True,verbose_name="场景")
     panel = models.ForeignKey(Panel, models.DO_NOTHING, db_column='panel_pno', blank=True, null=True)
     user = models.ForeignKey(User, models.DO_NOTHING, db_column='user_uid', blank=True, null=True)
 
@@ -51,17 +52,17 @@ class Rule(models.Model):
 #         db_table = 'shiyong'
 
 class Furniture(models.Model):
-    fno = models.BigAutoField(primary_key=True)
-    state = models.CharField(max_length=45, blank=True, null=True)
+    fno = models.BigAutoField(primary_key=True,verbose_name="fno号")
+    state = models.CharField(max_length=45, blank=True, null=True,verbose_name="状态")
     room = models.ForeignKey(Room, models.DO_NOTHING, db_column='room_rno', blank=True, null=True)
-    name = models.CharField(max_length=45, blank=True, null=True)
+    name = models.CharField(max_length=45, blank=True, null=True,verbose_name="家具名")
     panel = models.ForeignKey(Panel, models.DO_NOTHING, db_column='panel_pno', blank=True, null=True)
 
     class Meta:
         db_table = 'furniture'
 
 class Control(models.Model):
-    rule = models.OneToOneField(Rule, on_delete=models.CASCADE, db_column='rule_rno')
+    rule = models.OneToOneField(Rule, on_delete=models.CASCADE, db_column='rule_rno',verbose_name="规则")
     panel = models.ForeignKey(Panel, models.DO_NOTHING, db_column='panel_pno', blank=True, null=True)
     sensor = models.ForeignKey(Sensor, models.DO_NOTHING, db_column='sensor_sno', blank=True, null=True)
     room = models.ForeignKey(Room, models.DO_NOTHING, db_column='room_rno', blank=True, null=True)

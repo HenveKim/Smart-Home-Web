@@ -14,27 +14,24 @@
     <div class="login_b_center">
         <div class="login_bg">
             <h1>登录</h1>
-            <form action="#" id="login" method="post" novalidate>
-                {% csrf_token %}
+            <form action="#" id="login">
+<!--                //用户名-->
                 <div class="userName">
-                    <label>用户名</label>
-                    {{ form.username }}
-                    <span style="color: red;">{{ form.username.errors.0 }}</span>
+                    <span>用户:</span><input type="text">
                 </div>
 <!--                //密码-->
                 <div class="password">
-                    <label>密码</label>
-                    {{ form.password }}
-                    <span style="color: red;">{{ form.password.errors.0 }}</span>
+                    <span>密码:</span><input type="password">
                 </div>
 <!--                //登录按钮-->
                 <div class="login_btn">
-                            <button type="submit" class="btn btn-primary center-block" style="width: 100px;heigth">登录</button>
+                    <a href="index.html">
+                         <input type="button" value="登录">
+                    </a>
                 </div>
-
                 <div class="forgot_password">
                     <a href="">忘记密码</a>
-                    <a href="/regist">注册账号</a>
+                    <a href="/regist/">注册账号</a>
                 </div>
             </form>
         </div>
