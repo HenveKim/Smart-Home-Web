@@ -26,7 +26,8 @@
     </div>
     <div class="reg_center">
         <div class="reg_form">
-            <form action="#" method="post">
+            <form action="/regist/" method="post">
+                {% csrf_token %}
                 <table>
                     <tr>
                         <td class="td_left"><label for="username">用户名</label></td>

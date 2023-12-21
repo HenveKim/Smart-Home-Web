@@ -22,5 +22,5 @@ def regist(request):
         account = request.POST.get("rename")
         phonenumber = request.POST.get("telphone")
         # 添加到数据库
-        a=user.objects.create(uid=uid, password=password, account=account, phonenumber=phonenumber)
+        a=User.objects.create(uid=uid, password=password, account=account, phonenumber=phonenumber)
         return redirect('/login/')

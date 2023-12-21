@@ -7,8 +7,6 @@ class User(models.Model):
     account = models.CharField(max_length=10, blank=True, null=True)
     password = models.CharField(max_length=45, blank=True, null=True)
     phonenumber = models.CharField(max_length=20, blank=True, null=True)
-    limit = models.CharField(max_length=45, blank=True, null=True)
-
     class Meta:
         db_table = 'user'
 
