@@ -1,0 +1,104 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<title>个人信息页面</title>
+	<link href="../static/styles/wode1.css" rel="stylesheet" type="text/css" media="all"/>
+    <script src="../static/plugins/vue3.js"></script>
+</head>
+<body>
+
+    <div>
+        <div class="back">
+            <a href="/index/">返回</a>
+        </div>
+    </div>
+    
+
+    <div id="app">
+        <a href="/wode1change/">修改信息</a>
+      </div>
+
+
+
+<h1>个人信息</h1>
+<div class="element">
+	<div class="element-left">
+		<div class="edit">
+			<form class="form-horizontal" method="post" novalidate>
+          {% csrf_token %}
+                
+          {% for field in form %}
+          <div class="form-group">
+              <label>{{ field.label }}: </label>
+              <div>{{ field }}</div>
+              <!-- 数据校验,显示错误信息 -->
+              <span style="color: red;">{{ field.errors.0 }}</span>
+          </div>
+      {% endfor %}
+			<div class="submit">
+				<input type="submit"  value="修改密码" >
+			</div>
+		</div>
+	</div>
+	<div class="element-right" id="personal">
+		<div class="teddy-bear">
+			<div class="teddy-follow">
+				<ul>
+					<li class="folw-h">
+						<p>姓名</p>
+					</li>
+					<li class="folw-r">
+						<p>{{request.session.info.username}}</p>
+					</li>
+                    <li class="folw-h">
+						<p>电话</p>
+					</li>
+					<li class="folw-r">
+						<p>{{request.session.info.phonenumber}}</p>
+					</li>
+                    <li class="folw-h">
+						<p>邮箱</p>
+					</li>
+					<li class="folw-r">
+						<p>{{request.session.info.email}}</p>
+					</li>
+					<div class="clear"></div>
+				</ul>
+			</div>
+		</div>
+	</div>
+
+
+
+    <script>
+        var vm= Vue.createApp({
+            data(){
+                return{
+                    name:"1",
+                    phonenumber:"2",
+                    email:"3"
+                }
+            }
+        }).mount("#personal")
+    </script>
+
+	<div class="element-last">
+		<ul class="content">
+			<li class="menu button">
+				<a href="#">消息<span class="icon stat"></span><i>0</i></a>
+			</li>
+			<li class="menu info button">
+				<a href="/logout/">退出登录<span class="icon signout"></span></a>
+			</li>
+		</ul>
+	</div>
+
+    
+
+	<div class="clear"> </div>
+
+</div>
+</body>
+</html>

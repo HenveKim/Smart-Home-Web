@@ -4,13 +4,91 @@ body, html {
     height: 100%;
 }
 
+*{
+    margin: 0;
+    padding: 0;
+}
+.back{
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+}
+.back label{
+    width: 20px;
+    height: 20px;
+    box-sizing: border-box;
+    border: 2px solid white;
+    position: fixed;
+    z-index: 99;
+    left:calc(30px * var(--l) + 20px);
+    bottom:30px;
+    transition: ls linear;
+}
+.back input{
+    display: none;
+}
+.back div{
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center center;
+    transition: ls linear;
+    opacity: 0;
+}
+.img1{
+    background:url("../images/background.png");
+}
+.img2{
+    background:url("../images/rand1_r.jpg");
+}
+.img3{
+    background:url("../images/rand2.jpg");
+}
+.img4{
+    background:url("../images/rand3.png");
+}
+input:checked ~ label{
+    background:white;
+    box-shadow:0 0 5px hsl(calc(var(--l) / 5 * 360),80%,50%),0 0 10px hsl(calc(var(--l) / 5 * 360),80%,50%),0 0 20px hsl(calc(var(--l) / 5 * 360),80%,50%),
+    inset 0 0 5px hsl(calc(var(--l) / 5 * 360),80%,50%),inset 0 0 10px hsl(calc(var(--l) / 5 * 360),80%,50%);
+}
+input:checked ~ div{
+    opacity: 1;
+}
+input:checked ~ p{
+    animation:fadeout 2s;
+    opacity: 1;
+    left:10vw;
+}
+@keyframes fadeout{
+    0%{
+        left:10vw;
+        opacity: 1;
+    }
+    100%{
+        left:-20vw;
+        opacity: 0;
+    }
+}
+@keyframes fadein{
+    0%{
+        left:30vw;
+        opacity: 0;
+    }
+    100%{
+        left:10vw;
+        opacity: 1;
+    }
+}
+
+
+
+
+
 #login_body {
     height: 100%;
-    background-image: url("../images/background.png");
-    background-position: center;
-    background-size: cover;
-    /* 如果希望背景铺满整个页面，可以使用 background-size: cover; */
-    /* 如果希望背景图片始终保持原始尺寸，可以使用 background-size: contain; */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -33,7 +111,7 @@ body, html {
 
 }
 #login div{
-    height: 40px;
+    height: 20px;
     margin-top: 20px;
 }
 
@@ -62,6 +140,3 @@ body, html {
 a{
     text-decoration:none;
 }
-
-
-

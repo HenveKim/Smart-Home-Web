@@ -40,5 +40,82 @@
   #furniture {
     position: absolute;
     top: 70px; /* 位置在父容器底部 */
-    margin-left: 220px; /* 右边距 */
+    margin-left: 260px; 
+    width: 70%;
+  }
+
+  #furniture table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+
+  #furniture  th, td {
+    border: 1px solid #dddddd;
+    padding: 8px;
+    text-align: center; /* 将表格行中的文本居中显示 */
+  }
+
+  #furniture  th {
+    background-color: #f2f2f2;
+    color: #333333;
+    text-align: center; /* 将表格行中的文本居中显示 */
+  }
+
+  #furniture tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+
+  /* 优化标题栏样式 */
+  #furniture th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: center;
+    background-color: wheat;
+    color: rgb(1, 1, 1);
+  }
+
+  #furniture input[type="text"] {
+    border-radius: 20px; /* 圆角 */
+    padding: 5px 10px; /* 调整内边距 */
+    border: 1px solid #ccc; /* 边框样式 */
+  }
+
+  .delete-button {
+    padding: 5px 10px;
+    background-color: #ff6347;
+    color: white;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: background-color 0.3s ease; /* 添加过渡效果 */
+  }
+  
+  .delete-button:hover {
+    background-color: #a18188; /* 鼠标悬停时的背景颜色 */
+  }
+
+  .pagination {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .pagination li {
+    margin: 0 5px;
+  }
+  
+  .pagination a {
+    text-decoration: none;
+    color: #333;
+    padding: 5px 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    background-color: white; /* 设置按钮背景颜色为白色 */
+  }
+  
+  .pagination a:hover {
+    background-color: #f0f0f0;
   }

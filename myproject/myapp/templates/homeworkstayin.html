@@ -3,7 +3,6 @@
 <head>
     <meta charset="UTF-8">
   <title>Submenu in Sidebar</title>
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> 
   <script src="../static/scripts/homeworkstay.js"></script> 
   <link rel="stylesheet" href="../static/styles/homeworkstayin.css">
   <link rel="stylesheet" href="../static/styles/list.css">
@@ -14,40 +13,52 @@
         <div class="sidebar">
           <div class="box"></div>
           <ul>
-            <li><a href="index.html">首页</a></li>
+            <li><a href="/index/">首页</a></li>
             <li><a href="#">服务</a>
               <ul class="submenu">
-                  <li><a href="homeworkstay.html">家居信息查看</a></li>
-                  <li><a href="scene.html">创建特殊情景</a></li>
+                  <li><a href="/homeworkstay/">家居信息查看</a></li>
+                  <li><a href="/scene/">创建特殊情景</a></li>
                 </ul>
           </li>
-          <li><a href="phonenumber.html">我的</a></li>
+          <li><a href="/wode1/">我的</a></li>
           </ul>
           <img src="../static/images/logo.png" alt="logo.png">
         </div>
 
         <div class="back">
-            <a href="homeworkstay.html">返回</a>
+            <a href="/homeworkstay/">返回</a>
         </div>
-
+  
   <div class="content">
-    <p id="romms">{{room}}的家居</p>
+    <p id="romms">家居列表</p>
     <div id="furniture">
       <table>
         <tr>
-          <th>类型</th>
-          <th>编号</th>
+          <th>序号</th>
+          <th>名字</th>
           <th>状态</th>
+          <th>查询<input type="text" placeholder="输入要查询的内容"></th>
         </tr>
-        <tr v-for="furniture in furniture_list" :key="furniture">
-
-          <th>{{furniture.type}}</th>
-          <th>{{furniture.id}}</th>
-          <th>{{furniture.state}}</th>
-          <th><button id="delete" class="delete-button" @click="deleteItem(furniture)">删除</button></th>
-        </tr>
+        {% for obj in form %}
+          <tr key={{ obj.fno }}>
+            <th>{{ obj.fno }}</th>
+            <th>{{ obj.name }}</th>
+            <th>{{ obj.get_state_display }}</th>
+            <th>
+              <a class="delete-button" href="/homeworkstayin/{{ obj.fno }}/edit/">编辑</a>
+              <a class="delete-button" href="/homeworkstayin/{{ obj.fno }}/delete/">删除</a></th>
+          </tr>
+        {% endfor %}
       </table>
     </div>
+
+      <ul class="pagination">
+        <li><a href="?page=1">1</a></li>
+        <li><a href="?page=2">2</a></li>
+        <li><a href="?page=3">3</a></li>
+        <li><a href="?page=4">4</a></li>
+        <li><a href="?page=5">5</a></li>
+      </ul>
 </div>
 
 <script>
@@ -58,7 +69,8 @@
           {"type":"Refrigerator","id":1,"state":"on"},
           {"type":"tv","id":2,"state":"off"},
           {"type":"curtain","id":3,"state":"on"},
-        ]
+        ],
+        num:0,
       }
     },
     methods: {
@@ -71,65 +83,10 @@
   
 </script>
 
-<script>
 
-</script>
 <div id="app">
-  <button @click="showPopup">新增家具</button>
-
-  <!-- 模态框 -->
-  <div class="modal" :class="{ 'active': isPopupVisible }" @click="closePopup">
-    <!-- 弹窗 -->
-    <div class="popup" @click.stop>
-      <h2>新增家具</h2>
-      <div>
-        <label for="type">类型:</label>
-        <input type="text" id="type" v-model="newFurniture.type" />
-      </div>
-      <div>
-        <label for="number">编号:</label>
-        <input type="text" id="number" v-model="newFurniture.number" />
-      </div>
-      <div>
-        <label for="status">状态:</label>
-        <input type="text" id="status" v-model="newFurniture.status" />
-      </div>
-      <button @click="addFurniture">添加</button>
-    </div>
-  </div>
+  <a href="/homeworkstayinchange/">添加家居</a>
 </div>
-
-<script>
-  const { createApp, ref } = Vue;
-
-  createApp({
-    data() {
-      return {
-        isPopupVisible: false,
-        newFurniture: {
-          type: '',
-          number: '',
-          status: ''
-        }
-      };
-    },
-    methods: {
-      showPopup() {
-        this.isPopupVisible = true;
-      },
-      closePopup() {
-        this.isPopupVisible = false;
-      },
-      addFurniture() {
-        // 这里可以添加家具的逻辑，例如将数据发送到服务器或者进行其他处理
-        console.log('新增家具信息:', this.newFurniture);
-
-        // 添加完成后关闭弹窗
-        this.isPopupVisible = false;
-      }
-    }
-  }).mount('#app');
-</script>
 
 <script>
   function getTime() {

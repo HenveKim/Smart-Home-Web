@@ -22,13 +22,22 @@ from django.shortcuts import redirect
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', lambda request: redirect('login/')),
-
+    path('logout/', views.logout),
     path('index/', views.index),
     path('login/', views.login),
     path('regist/', views.regist),
-    path('regist2/', views.regist2),
-
+    path('registbk/', views.registbk),
     path('homeworkstay/', views.homeworkstay),
-    path('homeworkmake/', views.homeworkmake),
+    path('homeworkstayin/<int:no>', views.homeworkstayin),
+    path('wode1/',views.userreset),
+    path('wode1change/',views.useredit),
+    path('scene/',views.scene),
+    path('useredit/',views.useredit),
+    path('homeworkstaychange/',views.roomadd),
+    path('homeworkstayinchange/',views.furnitureadd),
+    path('homeworkstayin/<int:nid>/edit/', views.Furnitureedit),
+    path('homeworkstayin/<int:nid>/delete/', views.Furnituredelete),
+
+
 
 ]

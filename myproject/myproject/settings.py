@@ -48,6 +48,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'myapp.middleware.auth.AuthMiddleware',
 ]
 
 ROOT_URLCONF = 'myproject.urls'
@@ -80,7 +81,7 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'smart',
-        'USER': 'root', #数据库服务器的用户
+        'USER': 'henve', #数据库服务器的用户
         'PASSWORD': '01020002', #密码
         'HOST': '127.0.0.1', #主机
         'PORT': 3306, #端口

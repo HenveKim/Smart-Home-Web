@@ -3,7 +3,6 @@
 <head>
   <meta charset="UTF-8">
   <title>Submenu in Sidebar</title>
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> 
   <script src="../static/scripts/homeworkstay.js"></script> 
   <link rel="stylesheet" href="../static/styles/homeworkstay.css">
   <link rel="stylesheet" href="../static/styles/list.css">
@@ -15,28 +14,30 @@
   <div class="sidebar">
     <div class="box"></div>
     <ul>
-      <li><a href="index.html">首页</a></li>
+      <li><a href="/index/">首页</a></li>
       <li><a href="#">服务</a>
         <ul class="submenu">
-            <li><a href="homeworkstay.html">家居信息查看</a></li>
-            <li><a href="scene.html">创建特殊情景</a></li>
+            <li><a href="/homeworkstay/">家居信息查看</a></li>
+            <li><a href="/scene/">创建特殊情景</a></li>
           </ul>
     </li>
-    <li><a href="phonenumber.html">我的</a></li>
+    <li><a href="/wode1/">我的</a></li>
     </ul>
     <img src="../static/images/logo.png" alt="logo.png">
   </div>
 
   <div id="rooms" class="room-grid">
-    <div v-for="index in 7" :key="index" class="fangjian">
-      <img class="tubiao"  src="../static//images/bed.jpg">
-      <p>{{room}}{{index}}</p>
-      <p>房间家具数：{{number}}</p>
-      <p>灯：{{light}}</p>
-      <p>门：{{door}}</p>
-      <a href="homeworkstayin.html" class="button-link"><button>进入房间</button></a>
+    {% for obj in form %}
+    <div  :key= {{ obj.rno }} class="fangjian">
+      <img class="tubiao"  src="../static/images/bed.jpg">
+      <p>{{ obj.name }}</p>
+      <p>房间家具数：{{obj.num}}</p>
+      <p>欢 迎</p>
+      <p>进 入</p>
+      <a href="/homeworkstayin/{{ obj.rno }}" class="button-link"><button>进入房间</button></a>
       <img src="../static/images/doorrr.png" alt="图片描述">
     </div>
+    {% endfor %}
   </div>
 
   <script>
@@ -44,48 +45,16 @@
       data(){
         return {
           room:"livingroom",
-          light:"on",
-          door:"off"
         }
       }
     }).mount("#rooms")
   </script>
 
-  <div>
-    <div id="chartContainer">
-      <canvas id="myChart"></canvas>
-    </div>
-  <script>
-    // 假设这是从后台获取的数据，用于创建柱状图
-    const backendData = {
-      labels: ['降水量/ml', '光照强度', '光照时长/h', '气温℃'], // 柱状图的标签
-      values: [10, 20, 15, 25] // 对应标签的值
-    };
+<div id="app">
+  <a href="/homeworkstaychange/">添加房间</a>
+</div>
 
-    // 使用 Chart.js 创建柱状图
-    var ctx = document.getElementById('myChart').getContext('2d');
-    var myChart = new Chart(ctx, {
-      type: 'bar',
-      data: {
-        labels: backendData.labels,
-        datasets: [{
-          label: '今日天气情况',
-          data: backendData.values,
-          backgroundColor: 'rgba(54, 162, 235, 0.5)', // 柱状图颜色
-          borderColor: 'rgba(54, 162, 235, 1)', // 柱状图边框颜色
-          borderWidth: 1
-        }]
-      },
-      options: {
-        scales: {
-          y: {
-            beginAtZero: true
-          }
-        }
-      }
-    });
-  </script>
-  </div>
+
 </div>
 
 

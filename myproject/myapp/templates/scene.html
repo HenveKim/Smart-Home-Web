@@ -12,14 +12,14 @@
   <div class="sidebar">
     <div class="box"></div>
     <ul>
-      <li><a href="index.html">首页</a></li>
+      <li><a href="/index/">首页</a></li>
       <li><a href="#">服务</a>
         <ul class="submenu">
-            <li><a href="homeworkstay.html">家居信息查看</a></li>
-            <li><a href="scene.html">创建特殊情景</a></li>
+            <li><a href="/homeworkstay/">家居信息查看</a></li>
+            <li><a href="/scene/">创建特殊情景</a></li>
           </ul>
     </li>
-    <li><a href="phonenumber.html">我的</a></li>
+    <li><a href="/wode1/">我的</a></li>
     </ul>
     <img src="../static/images/logo.png" alt="logo.png">
   </div>
@@ -36,21 +36,33 @@
   <div id="furniture">
     <table>
       <tr>
+        <th>序号</th>
         <th>场景名称</th>
         <th>状态</th>
         <th>相关家具</th>
         <th>执行动作</th>
         <th>创建时间</th>
+        <th>查询<input type="text" placeholder="输入要查询的内容"></th>
       </tr>
       <tr v-for="furniture in furniture_list" :key="furniture">
-
         <th>{{}}</th>
         <th>{{}}</th>
         <th>{{}}</th>
         <th>{{}}</th>
         <th>{{}}</th>
+        <th>{{}}</th>
+        <th><button id="delete" class="delete-button" @click="deleteItem(furniture)">删除</button></th>
        </tr>
       </table>
+
+      <ul class="pagination">
+        <li><a href="?page=1">1</a></li>
+        <li><a href="?page=2">2</a></li>
+        <li><a href="?page=3">3</a></li>
+        <li><a href="?page=4">4</a></li>
+        <li><a href="?page=5">5</a></li>
+      </ul>
+
     </div>
 <script>
   var vm=Vue.creatApp({

@@ -116,3 +116,48 @@
     background-color: #532fd3; /* 悬停时的背景颜色 */
   }
   
+  .pagination {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .pagination li {
+    margin: 0 5px;
+  }
+  
+  .pagination a {
+    text-decoration: none;
+    color: #333;
+    padding: 5px 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    background-color: white; /* 设置按钮背景颜色为白色 */
+  }
+  
+  .pagination a:hover {
+    background-color: #f0f0f0;
+  }
+
+  #furniture input[type="text"] {
+    border-radius: 20px; /* 圆角 */
+    padding: 5px 10px; /* 调整内边距 */
+    border: 1px solid #ccc; /* 边框样式 */
+  }
+  #app a {
+    display: inline-block;
+    padding: 10px 20px;
+    text-decoration: none;
+    color: white;
+    background-color: rgba(52, 152, 219, 0.7); /* 半透明的背景颜色 */
+    border: 1px solid rgba(41, 128, 185, 0.7); /* 半透明的边框颜色 */
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+  }
+  
+  #app a:hover {
+    background-color: rgba(41, 128, 185, 0.7); /* 悬停时的半透明背景颜色 */
+  }
+  

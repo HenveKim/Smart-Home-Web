@@ -5,14 +5,16 @@
   width: 500px;
   height: 200px;
 }
+
 .fangjian{
-  background-color: white;
-  border-radius: 30px; /* 圆角半径 */
+    background-color: white;
+    border-radius: 30px; /* 圆角半径 */
     width: 300px;
     height: 170px;
     border: 1px solid black;
     padding: 25px;
     margin: 25px;
+    box-shadow: 0px 0px 10px 10px wheat;
 }
 .fangjian  img:first-child{
   margin-top:13px;
@@ -51,4 +53,63 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr); /* 3列 */
   gap: 0; /* 间距 */
+}
+
+#app button {
+  padding: 15px 30px; /* 设置按钮内边距 */
+  background-color: #3498db; /* 设置蓝色背景 */
+  border: none; /* 去除边框 */
+  color: white; /* 设置文字颜色 */
+  font-size: 18px; /* 设置文字大小 */
+  border-radius: 5px; /* 圆角 */
+  transition: background-color 0.3s ease; /* 过渡效果 */
+}
+
+#app button:hover {
+  background-color: #2980b9; /* 鼠标悬停时的背景颜色 */
+}
+
+/* 放大按钮 */
+.larger-button {
+  font-size: 20px;
+  width: 200px;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  justify-content: center;
+  align-items: center;
+}
+.modal.active {
+  display: flex;
+}
+.popup {
+  background-color: white;
+  padding: 20px;
+  width: 300px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+.popup input {
+  margin-bottom: 10px;
+}
+#app a {
+  display: inline-block;
+  padding: 10px 20px;
+  text-decoration: none;
+  color: white;
+  background-color: rgba(52, 152, 219, 0.7); /* 半透明的背景颜色 */
+  border: 1px solid rgba(41, 128, 185, 0.7); /* 半透明的边框颜色 */
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+#app a:hover {
+  background-color: rgba(41, 128, 185, 0.7); /* 悬停时的半透明背景颜色 */
 }

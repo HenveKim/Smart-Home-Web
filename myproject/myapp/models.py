@@ -21,7 +21,9 @@ class Panel(models.Model):
 class Room(models.Model):
     rno = models.BigAutoField(primary_key=True,verbose_name="rno号")
     name = models.CharField(max_length=45,verbose_name="房间名")
-
+    num = models.IntegerField(verbose_name="家具数",default=0)
+    def __str__(self):
+        return self.name
     class Meta:
         db_table = 'room'
 
@@ -52,8 +54,12 @@ class Rule(models.Model):
 #         db_table = 'shiyong'
 
 class Furniture(models.Model):
+    state_choices = (
+        (0, "关"),
+        (1, "开"),
+    )
     fno = models.BigAutoField(primary_key=True,verbose_name="fno号")
-    state = models.CharField(max_length=45, blank=True, null=True,verbose_name="状态")
+    state = models.SmallIntegerField(verbose_name="状态", choices=state_choices, default=0)
     room = models.ForeignKey(Room, models.DO_NOTHING, db_column='room_rno', blank=True, null=True)
     name = models.CharField(max_length=45, blank=True, null=True,verbose_name="家具名")
     panel = models.ForeignKey(Panel, models.DO_NOTHING, db_column='panel_pno', blank=True, null=True)

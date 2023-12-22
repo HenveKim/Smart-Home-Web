@@ -8,7 +8,27 @@
     <link rel="stylesheet" href="../static/styles/header.css">
 </head>
 <body>
-
+<div class="back">
+    <input type="radio" name="back" id="img1" checked>
+    <label for="img1" style="--l:1;"></label>
+    <div class="img1"></div>
+ </div>
+ <div class="back">
+    <input type="radio" name="back" id="img2">
+    <label for="img2" style="--l:2;"></label>
+    <div class="img2"></div>
+ </div>
+ <div class="back">
+    <input type="radio" name="back" id="img3">
+    <label for="img3" style="--l:3;"></label>
+    <div class="img3"></div>
+ </div>
+ <div class="back">
+    <input type="radio" name="back" id="img4">
+    <label for="img4" style="--l:4;"></label>
+    <div class="img4"></div>
+ </div>
+ 
 <!--中部-->
 <div id="login_body">
     <div class="login_b_center">
@@ -17,19 +37,23 @@
             <form action="#" id="login" method="post" novalidate>
                 {% csrf_token %}
                 <div class="userName">
-                    <label>用户名</label>
+                    <label>用户:</label>
                     {{ form.username }}
+                    <br>
                     <span style="color: red;">{{ form.username.errors.0 }}</span>
                 </div>
+                <div></div>
 <!--                //密码-->
                 <div class="password">
-                    <label>密码</label>
+                    <label>密码:</label>
                     {{ form.password }}
+                    <br>
                     <span style="color: red;">{{ form.password.errors.0 }}</span>
                 </div>
+                <div></div>
 <!--                //登录按钮-->
                 <div class="login_btn">
-                            <button type="submit" class="btn btn-primary center-block" style="width: 100px;heigth">登录</button>
+                        <td colspan="2" align="center"><input type="submit" value="登录" id="btn_sub"></td>
                 </div>
 
                 <div class="forgot_password">

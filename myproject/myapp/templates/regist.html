@@ -17,7 +17,6 @@
     </div>
 </div>
 
-
 <!--表单内容-->
 <div class="reg_back">
     <div class="reg_left">
@@ -26,14 +25,25 @@
     </div>
     <div class="reg_center">
         <div class="reg_form">
-            <form action="/regist/" method="post">
+            <form  method="post" novalidate>
                 {% csrf_token %}
                 <table>
-                    <tr>
+                    {% for field in form %}
+                        <tr>
+                            <td class="td_left"><label for = "{{ field.name }}">{{ field.label }}</label></td>
+                            <td class="td_right"><input  id="{{ field.name }}"  
+                                name="{{ field.name }}"placeholder="请输入{{ field.label }}">
+                            </td>
+                            <!-- 数据校验,显示错误信息 -->
+                            <span style="color: red;">{{ field.errors.0 }}</span>
+                        </tr>
+                    {% endfor %}
+                    <!-- <tr>
                         <td class="td_left"><label for="username">用户名</label></td>
                         <td class="td_right"><input type="text" name="username" placeholder="请输入用户名"
                                                     id="username"></td>
                     </tr>
+
                     <tr>
                         <td class="td_left"><label for="password">密码</label></td>
                         <td class="td_right"><input type="password" name="password" placeholder="请输入密码"
@@ -48,7 +58,7 @@
                         <td class="td_left"><label for="telphone">手机号</label></td>
                         <td class="td_right"><input type="text" name="telphone" placeholder="请输入您的手机号"
                                                     id="telphone"></td>
-                    </tr>
+                    </tr> -->
                     <tr>
                         <td colspan="2" align="center"><input type="submit" value="注册" id="btn_sub"></td>
                     </tr>
@@ -57,7 +67,7 @@
         </div>
     </div>
     <div class="reg_right">
-        <p>已有账号?<a href="login.html">立即登录</a></p>
+        <p>已有账号?<a href="/login/">立即登录</a></p>
     </div>
 </div>
 </body>
