@@ -243,7 +243,6 @@ def furnitureadd(request):
     
     # 校验失败(在页面上显示错误信息)
     return render(request, "homeworkstayinchange.html", {"form": form})
-
 def Furnitureedit(request,nid):
     # 判断 id 是否存在
     row_object = Furniture.objects.filter(fno=nid).first()
