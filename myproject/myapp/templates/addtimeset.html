@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>定时</title>
+    <style>
+        /* 基本样式重置 */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* 表单样式 */
+        .container {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .biaodan {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        input[type="text"] {
+            width: calc(100% - 18px);
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .change {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .change:hover {
+            background-color: #0056b3;
+        }
+
+        p {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <p>请提交定时信息</p>
+    <div class="biaodan">
+        <br>时间默认格式:2024-01-01 12:00:00.000000</br>
+        <form class="form-horizontal" method="post" novalidate>
+            {% csrf_token %}
+                
+          {% for field in form %}
+          <div class="form-group">
+              <label>{{ field.label }}: </label>
+              <div>{{ field }}</div>
+              <!-- 数据校验,显示错误信息 -->
+              <span style="color: red;">{{ field.errors.0 }}</span>
+          </div>
+      {% endfor %}
+          <div class="form-group">
+            <div class="changes">
+              <button type="submit" class="change">保存</button>
+            </div>
+          </div>
+        </form>
+      </div>
+      </div>
+</body>
+</html>

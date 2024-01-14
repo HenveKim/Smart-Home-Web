@@ -39,26 +39,45 @@
           <th>状态</th>
           <th>查询<input type="text" placeholder="输入要查询的内容"></th>
         </tr>
-        {% for obj in form %}
-          <tr key={{ obj.fno }}>
-            <th>{{ obj.fno }}</th>
-            <th>{{ obj.name }}</th>
-            <th>{{ obj.get_state_display }}</th>
-            <th>
-              <a class="delete-button" href="/homeworkstayin/{{ obj.fno }}/edit/">编辑</a>
-              <a class="delete-button" href="/homeworkstayin/{{ obj.fno }}/delete/">删除</a></th>
-          </tr>
-        {% endfor %}
+        {% for obj in current_page_data %}
+        <tr key="{{ obj.fno }}">
+          <td>{{ obj.fno }}</td>
+          <td>{{ obj.name }}</td>
+          <td>{{ obj.get_state_display }}</td>
+          <td>
+            <a class="delete-button" href="/homeworkstayin/{{ obj.fno }}/edit/">编辑</a>
+            <a class="delete-button" href="/homeworkstayin/{{ obj.fno }}/delete/">删除</a>
+          </td>
+        </tr>
+      {% endfor %}
       </table>
     </div>
 
-      <ul class="pagination">
-        <li><a href="?page=1">1</a></li>
-        <li><a href="?page=2">2</a></li>
-        <li><a href="?page=3">3</a></li>
-        <li><a href="?page=4">4</a></li>
-        <li><a href="?page=5">5</a></li>
-      </ul>
+    <div class="pagination">
+      <span class="step-links">
+        {% if current_page_data.has_previous %}
+          <a href="?page=1">&laquo; 首页</a>
+          <a href="?page={{ current_page_data.previous_page_number }}">上一页</a>
+        {% endif %}
+    
+        <span class="current">
+          第 {{ current_page_data.number }} 页/共 {{ current_page_data.paginator.num_pages }}页.
+        </span>
+    
+        {% if current_page_data.has_next %}
+          <a href="?page={{ current_page_data.next_page_number }}">下一页</a>
+          <a href="?page={{ current_page_data.paginator.num_pages }}">尾页 &raquo;</a>
+        {% endif %}
+      </span>
+    </div>
+     <form>
+        <div class="input-group" style="width: 200px;">
+          <input type="text" name="page" class="form-control" placeholder="页码">
+          <span class="input-group-btn">
+            <button class="btn btn-default" type="submit">跳转</button> 
+          </span>
+        </div>
+     </form>
 </div>
 
 <script>
@@ -83,6 +102,9 @@
   
 </script>
 
+<div id="app">
+  <a href="/addtimeset/">添加定时</a>
+</div>
 
 <div id="app">
   <a href="/homeworkstayinchange/">添加家居</a>

@@ -5,6 +5,7 @@
   <title>Submenu in Sidebar</title>
   <link rel="stylesheet" href="../static/styles/list.css">
   <link rel="stylesheet" href="../static/styles/scene.css">
+  <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
 </head>
 <body>
 
@@ -33,48 +34,62 @@
     </div>
     
 
-  <div id="furniture">
-    <table>
-      <tr>
-        <th>序号</th>
-        <th>场景名称</th>
-        <th>状态</th>
-        <th>相关家具</th>
-        <th>执行动作</th>
-        <th>创建时间</th>
-        <th>查询<input type="text" placeholder="输入要查询的内容"></th>
-      </tr>
-      <tr v-for="furniture in furniture_list" :key="furniture">
-        <th>{{}}</th>
-        <th>{{}}</th>
-        <th>{{}}</th>
-        <th>{{}}</th>
-        <th>{{}}</th>
-        <th>{{}}</th>
-        <th><button id="delete" class="delete-button" @click="deleteItem(furniture)">删除</button></th>
-       </tr>
+    <div id="furniture">
+      <table>
+        <tr>
+          <th>序号</th>
+          <th>场景名称</th>
+          <th>最近执行时间</th>
+          <th>创建时间</th>
+          <th>查询<input type="text" v-model="query" placeholder="输入要查询的内容"></th>
+        </tr>
+        <tr v-for="(furniture, index) in furniture_list" :key="furniture.id">
+          <th>{{ index + 1 }}</th>
+          <th>{{ furniture.name }}</th>
+          <th>{{ furniture.lastExecutionTime }}</th>
+          <th>{{ furniture.creationTime }}</th>
+          <th>
+            <a href="./seescene" class="change-button">编辑</a>
+            <button type="button" @click="showSuccessMessage()">应用</button>
+            <button class="delete-button" @click="deleteItem(furniture)">删除</button>
+          </th>
+        </tr>
       </table>
-
-      <ul class="pagination">
-        <li><a href="?page=1">1</a></li>
-        <li><a href="?page=2">2</a></li>
-        <li><a href="?page=3">3</a></li>
-        <li><a href="?page=4">4</a></li>
-        <li><a href="?page=5">5</a></li>
-      </ul>
-
     </div>
-<script>
-  var vm=Vue.creatApp({
-    data(){
-      return{
-
-      }
+    
+    <script>
+        function showSuccessMessage() {
+      // 在这里使用 alert 显示成功消息
+      alert("成功！");
     }
-  }).mount("#furniture")
-</script>
+    new Vue({
+      el: '#furniture',
+      data: {
+        query: '',
+        furniture_list: [
+          { id: 1, name: '回家', lastExecutionTime: '2024/1/6', creationTime: '2024/1/6' },
+          { id: 2, name: '出门', lastExecutionTime: '2024/1/8', creationTime: '2024/1/7' },
+          { id: 3, name: '睡觉', lastExecutionTime: '2024/1/8', creationTime: '2024/1/8' }
+          // Add more data as needed
+        ]
+      },
+      methods: {
+        showSuccessMessage() {
+          alert("成功！");
+        },
+        deleteItem(furniture) {
+          // Your delete item logic here
+        }
+      }
+    });
+    </script>
+    
 
 <script>
+  function showSuccessMessage() {
+      // 在这里使用 alert 显示成功消息
+      alert("成功！");
+    }
   function getTime() {
       var date = new Date();
       var year = date.getFullYear(); //获取年份

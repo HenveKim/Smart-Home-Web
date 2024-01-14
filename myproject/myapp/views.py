@@ -2,7 +2,15 @@ from django.shortcuts import render,HttpResponse,redirect
 from myapp.models import *
 from django import forms
 from myapp.utils.encrypt import md5
-
+from django.utils.safestring import mark_safe
+import datetime
+from background_task import background
+from django.core.paginator import Paginator 
+from django.shortcuts import render 
+from .models import Furniture
+from apscheduler.schedulers.background import BackgroundScheduler
+from django_apscheduler.jobstores import DjangoJobStore, register_events, register_job
+import time
 #ModelForm
 class UserForm(forms.ModelForm):
     class Meta:
@@ -81,7 +89,7 @@ class LoginForm(forms.Form):
 class RoomForm(forms.ModelForm):
     class Meta:
         model = Room
-        fields = ['rno','name','num']
+        fields = ['rno','name']
 class FurnitureForm(forms.ModelForm):
     class Meta:
         model = Furniture
@@ -90,6 +98,10 @@ class FurnitureEditForm(forms.ModelForm):
     class Meta:
         model = Furniture
         fields = ['name','state','room']
+class TimeForm(forms.ModelForm):
+    class Meta:
+        model = Panel
+        fields = ['fno','start_time','end_time','state']
 
 # Create your views here.
 
@@ -163,8 +175,35 @@ def homeworkstay(request):
     form = Room.objects.all().order_by("rno")
     return render(request, 'homeworkstay.html',{"form":form})
 def homeworkstayin(request,no):
-    form = Furniture.objects.filter(room_id=no)
-    return render(request, 'homeworkstayin.html',{"form":form})
+    count = 0
+    count = Furniture.objects.filter(room_id=no).count()
+    Room.objects.filter(rno=no).update(num=count)
+     # 过滤出指定房间号的 Furniture 对象
+    furniture_objects = Furniture.objects.filter(room_id=no)
+
+    # 每页显示的数量
+    items_per_page = 10
+
+    # 创建 Paginator 对象
+    paginator = Paginator(furniture_objects, items_per_page)
+
+    # 获取当前请求的页码，默认为第一页
+    page_number = request.GET.get('page', 1)
+
+    # 获取指定页的数据
+    try:
+        current_page_data = paginator.page(page_number)
+    except EmptyPage:
+        # 如果请求的页码超出范围，返回最后一页的数据
+        current_page_data = paginator.page(paginator.num_pages)
+
+    # 将分页数据传递给模板
+    context = {
+        'current_page_data': current_page_data,
+    }
+
+    return render(request, 'homeworkstayin.html', context)
+
 # def wode1(request):
 #     return render(request, 'wode1.html')
 def useredit(request):
@@ -209,7 +248,8 @@ def userreset(request):
 
 def scene(request):
     return render(request, 'scene.html')
-
+def seescene(request):
+    return render(request, 'seescene.html')
 def roomadd(request):
     """添加房间"""
     if request.method == "GET":
@@ -232,7 +272,7 @@ def furnitureadd(request):
     if request.method == "GET":
         form = FurnitureForm()
         return render(request, "homeworkstayinchange.html", {"form": form})
-
+    
     # 用户POST请求提交数据,需要进行数据校验
     form = FurnitureForm(data=request.POST)
     if form.is_valid():
@@ -262,3 +302,49 @@ def Furnitureedit(request,nid):
 def Furnituredelete(request,nid):
     Furniture.objects.filter(fno=nid).delete()
     return redirect("/homeworkstay/")
+
+def addtimeset(request):
+    if request.method == "GET":
+        form = TimeForm()
+        return render(request, "homeworkstayinchange.html", {"form": form})
+    
+    # 用户POST请求提交数据,需要进行数据校验
+    form = TimeForm(data=request.POST)
+    if form.is_valid():
+        #print(form.cleaned_data)
+        # 直接保存至数据库
+        form.save()
+        return redirect("/homeworkstay/")
+    
+    # 校验失败(在页面上显示错误信息)
+    return render(request, "homeworkstayinchange.html", {"form": form})
+
+try:
+    scheduler = BackgroundScheduler() # 创建定时任务的调度器对象——实例化调度器
+    # 调度器使用DjangoJobStore()
+    scheduler.add_jobstore(DjangoJobStore(), "default")
+	# 'cron'方式循环，周一到周五，每天9:30:10执行,id为工作ID作为标记  
+    # ('scheduler',"interval", seconds=1)  #用interval方式循环，每一秒执行一次  
+    @register_job(scheduler, "interval", seconds=5)
+    
+    def my_job():  # 定义定时任务
+        # 定时每分钟执行一次
+        pls = Panel.objects.all()
+        print(time.strftime('%Y-%m-%d %H:%M:%S'))
+        for pl in pls:
+            toggle_furniture(pl)
+        def toggle_furniture(panel):    
+            furniture = Furniture.objects.get(fno=panel.fno)
+            current_time = datetime.now()
+            if current_time.time() >= panel.start_time and current_time.time() <= panel.end_time:
+                furniture.state = panel.state
+                furniture.save()
+        
+    # 监控任务
+    register_events(scheduler)
+	# 向调度器中添加定时任务
+    scheduler.add_job(my_job,replace_existing=True,id="my_job")
+    # 启动定时任务调度器工作——调度器开始
+    scheduler.start()
+except Exception as e:
+    print('定时任务异常：%s' % str(e))

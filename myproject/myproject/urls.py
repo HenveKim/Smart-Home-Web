@@ -37,7 +37,9 @@ urlpatterns = [
     path('homeworkstayinchange/',views.furnitureadd),
     path('homeworkstayin/<int:nid>/edit/', views.Furnitureedit),
     path('homeworkstayin/<int:nid>/delete/', views.Furnituredelete),
-
+    path('addtimeset/', views.addtimeset),
+    path('scene/',views.scene),
+    path('seescene/',views.seescene)
 
 
 ]

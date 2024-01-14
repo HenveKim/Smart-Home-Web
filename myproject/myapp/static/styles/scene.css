@@ -1,5 +1,4 @@
 .container {
-    background-color: white;
     width: 90%;
     height: 60px;
     display: flex;
@@ -118,4 +117,38 @@
   
   .pagination a:hover {
     background-color: #f0f0f0;
+  }
+
+
+  .change-button,
+  .delete-button,
+  button {
+    padding: 10px 20px; /* 调整按钮的内边距 */
+    font-size: 16px;   /* 调整按钮的字体大小 */
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+
+  .change-button {
+    background-color: #007bff; /* 蓝色背景 */
+    color: white;              /* 白色文字 */
+  }
+
+  button {
+    background-color: #007bff; /* 蓝色背景 */
+    color: white;              /* 白色文字 */
+  }
+
+  button:hover {
+    background-color: #0056b3; /* 鼠标悬停时的背景颜色 */
+  }
+
+  #delete {
+    background-color: #dc3545; /* 红色背景 */
+    color: white;              /* 白色文字 */
+  }
+
+  #delete:hover {
+    background-color: #c82333; /* 红色背景（悬停时） */
   }

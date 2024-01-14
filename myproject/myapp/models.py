@@ -11,21 +11,43 @@ class User(models.Model):
     class Meta:
         db_table = 'user'
 
-class Panel(models.Model):
-    pno = models.BigAutoField(primary_key=True,verbose_name="pno号")
-    time = models.TimeField(blank=True, null=True,verbose_name="时间")
-
-    class Meta:
-        db_table = 'panel'
-
 class Room(models.Model):
     rno = models.BigAutoField(primary_key=True,verbose_name="rno号")
     name = models.CharField(max_length=45,verbose_name="房间名")
     num = models.IntegerField(verbose_name="家具数",default=0)
+
     def __str__(self):
         return self.name
     class Meta:
         db_table = 'room'
+
+class Furniture(models.Model):
+    state_choices = (
+        (0, "关"),
+        (1, "开"),
+    )
+    fno = models.BigAutoField(primary_key=True,verbose_name="fno号")
+    state = models.SmallIntegerField(verbose_name="状态", choices=state_choices, default=0)
+    room = models.ForeignKey(Room, models.DO_NOTHING, db_column='room_rno', blank=True, null=True)
+    name = models.CharField(max_length=45, blank=True, null=True,verbose_name="家具名")
+
+    class Meta:
+        db_table = 'furniture'
+
+class Panel(models.Model):
+    state_choices = (
+        (0, "关"),
+        (1, "开"),
+    )
+    pno = models.BigAutoField(primary_key=True,verbose_name="pno号")
+    start_time = models.DateTimeField(blank=True, null=True,verbose_name="开始时间")
+    end_time = models.DateTimeField(blank=True, null=True,verbose_name="结束时间")
+    fno = models.IntegerField(verbose_name="编号",db_column='fno',blank=False, null=False,default=None)
+    state = models.SmallIntegerField(verbose_name="状态",blank=False, null=False,default=None,choices=state_choices)
+    def __str__(self):
+        return self.fno
+    class Meta:
+        db_table = 'panel'
 
 class Sensor(models.Model):
     sno = models.BigAutoField(primary_key=True,verbose_name="sno号")
@@ -53,19 +75,7 @@ class Rule(models.Model):
 #     class Meta:
 #         db_table = 'shiyong'
 
-class Furniture(models.Model):
-    state_choices = (
-        (0, "关"),
-        (1, "开"),
-    )
-    fno = models.BigAutoField(primary_key=True,verbose_name="fno号")
-    state = models.SmallIntegerField(verbose_name="状态", choices=state_choices, default=0)
-    room = models.ForeignKey(Room, models.DO_NOTHING, db_column='room_rno', blank=True, null=True)
-    name = models.CharField(max_length=45, blank=True, null=True,verbose_name="家具名")
-    panel = models.ForeignKey(Panel, models.DO_NOTHING, db_column='panel_pno', blank=True, null=True)
 
-    class Meta:
-        db_table = 'furniture'
 
 class Control(models.Model):
     rule = models.OneToOneField(Rule, on_delete=models.CASCADE, db_column='rule_rno',verbose_name="规则")
@@ -76,3 +86,4 @@ class Control(models.Model):
 
     class Meta:
         db_table = 'control'
+
